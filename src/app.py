@@ -306,7 +306,7 @@ app.layout = html.Div([
                         color="primary",
                         type="grow",
                     ),
-                   dcc.RangeSlider(1993,2022,3,
+                   dcc.RangeSlider(2000,2022,3,
     id='year-range-slider',
  
     value=[1993, 2022],  # Default range
@@ -439,53 +439,58 @@ def update_correlation_graph(selected_division, selected_feature_x, selected_fea
     fig = px.strip(df, x=selected_feature_x, y=selected_feature_y, title=f'{selected_feature_x} vs {selected_feature_y} in the {selected_division} Division'
 )
     return fig
-@app.callback(
-   dash.dependencies.Output('year-range-slider', 'min'),
-    [dash.dependencies.Input('fighter-stats-dropdown', 'value')]
+
+""""@app.callback(
+    dash.dependencies.Output('year-range-slider', 'min'),
+     [dash.dependencies.Input('fighter-stats-dropdown', 'value')]
 )
 def update_slider_min(selected_fighter):
-    fighter_data = df.loc[df['fighter'] == selected_fighter]
-    min_year = fighter_data['date'].dt.year.min()
-    return min_year   
+     fighter_data = df.loc[df['fighter'] == selected_fighter]
+     print(fighter_data)
+     
+     min_year = fighter_data['date'].dt.year.min()
+     print(min_year)
+     return min_year   """""
+
 
 @app.callback(dash.dependencies.Output('fighter-full-stats-graph', 'figure'),
-              [dash.dependencies.Input('fighter-stats-dropdown', 'value'), dash.dependencies.Input('fighter-specify-stats-dropdown', 'value')],
-                     [dash.dependencies.Input('year-range-slider', 'value')] # Slider input
+                  [dash.dependencies.Input('fighter-stats-dropdown', 'value'), dash.dependencies.Input('fighter-specify-stats-dropdown', 'value')],
+                            [dash.dependencies.Input('year-range-slider', 'value')] # Slider input
 )
 
 def update_fighter_stats_graph(fighter_name, fighter_stat_specification, selected_years):
-    print(selected_years)  # Print the value of selected_years to the console
+     print(selected_years)  # Print the value of selected_years to the console
 
-    # Convert 'date' column to datetime
-    df['date'] = pd.to_datetime(df['date'], format='%m/%d/%Y')
+     # Convert 'date' column to datetime
+    # df['date'] = pd.to_datetime(df['date'], format='%m/%d/%Y')
 
-    # Filter the data for the selected fighter
-    fighter_data = df.loc[df['fighter'] == fighter_name]
+     # Filter the data for the selected fighter
+     fighter_data = df.loc[df['fighter'] == fighter_name]
 
-    # Filter data by the selected range of years
-    start_year, end_year = selected_years
-    fighter_data = fighter_data[(fighter_data['date'].dt.year >= start_year) & (fighter_data['date'].dt.year <= end_year)]
-
-    if fighter_stat_specification == 'result':
-        fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
-                      title=f'{fighter_stat_specification} for {fighter_name} (1 means the fighter won, 0 means the fighter lost)')
-        return fig
-    if fighter_stat_specification == 'control':
-        fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
-                      title=f'{fighter_stat_specification} (in seconds) for {fighter_name}')
-        return fig
-    if 'accuracy' in fighter_stat_specification:
-        fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
-                      title=f'{fighter_stat_specification} (in percentages) for {fighter_name}')
-        return fig
-    if 'differential' in fighter_stat_specification:
-        fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
-                      title=f'{fighter_stat_specification} for {fighter_name}')
-        return fig
-    # Create the line plot
-    fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
-                  title=f'{fighter_stat_specification} for {fighter_name}')
-    return fig
+     # Filter data by the selected range of years
+     start_year, end_year = selected_years
+     fighter_data = fighter_data[(pd.to_datetime(fighter_data['date']).dt.year >= start_year) & 
+                            (pd.to_datetime(fighter_data['date']).dt.year <= end_year)]
+     if fighter_stat_specification == 'result':
+          fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
+                             title=f'{fighter_stat_specification} for {fighter_name} (1 means the fighter won, 0 means the fighter lost)')
+          return fig
+     if fighter_stat_specification == 'control':
+          fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
+                             title=f'{fighter_stat_specification} (in seconds) for {fighter_name}')
+          return fig
+     if 'accuracy' in fighter_stat_specification:
+          fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
+                             title=f'{fighter_stat_specification} (in percentages) for {fighter_name}')
+          return fig
+     if 'differential' in fighter_stat_specification:
+          fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
+                             title=f'{fighter_stat_specification} for {fighter_name}')
+          return fig
+     # Create the line plot
+     fig = px.line(fighter_data, x='date', y=fighter_stat_specification,
+                        title=f'{fighter_stat_specification} for {fighter_name}')
+     return fig
 
 # Run the app
 if __name__ == '__main__':
