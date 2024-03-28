@@ -1,0 +1,95 @@
+.parent {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 1000px;
+    font-family: 'Roboto', sans-serif;
+
+
+}
+.custom-margin {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.kaggle{
+    text-align: center;
+}
+.carousel-sm
+{ width:1000px;
+  height: 1000px;
+    margin-left: 300px;
+}
+.child1,
+.child2,
+.child3,
+.child4 {
+    padding: 20px;
+}
+
+.child1_1,
+.child1_2,
+.child2_1,
+.child2_2,
+.child3_1,
+.child3_2 {
+    margin-bottom: 20px;
+
+}
+
+.child1_1,
+.child2_1,
+.child3_1 {
+    display: flex;
+    flex-direction: column; 
+
+}
+
+.child1_1 input,
+.child1_1 button,
+.child2_1 select,
+.child3_1 select {
+    margin-bottom: 10px;
+}
+
+.child1_2 label,
+.child2_2 label,
+.child3_2 label,
+.child4 label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.child1_2 input[type="radio"],
+.child2_2 input[type="radio"],
+.child3_2 input[type="radio"],
+.child4 input[type="radio"] {
+    margin-right: 5px;
+}
+
+.child4 select,
+.child4 input[type="radio"] {
+    margin-bottom: 10px;
+}
+
+.child1 h2,
+.child2 h2,
+.child3 h2{
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        color: white;
+    
+    
+}
+.child4 h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
+
+.child4 input[type="radio"] {
+    margin-right: 10px;
+}
