@@ -81,6 +81,10 @@ load_figure_template("MORPH")  # Load the template
 
 # Define the layout
 app.layout = html.Div([
+        html.H1("Welcome to the UFC Data Visualization Dashboard", style={"textAlign":"center"}),
+        html.H2("Below are 5 data visulizations focused on various UFC statistics - enjoy!", style={"textAlign":"center"}),
+        html.H3("Created by Natalia Smith", style={"textAlign":"center", 'margin-bottom':'50px'}),
+
     dbc.Row([ 
         dbc.Col(html.Div([
             dbc.Card(
@@ -236,28 +240,7 @@ app.layout = html.Div([
                         color="primary",
                         type="grow",
                     ),
-                    html.H2("Y-axis"),
-                    dbc.RadioItems(
-                        id='correlation-checklist-yaxis',
-                        options=[
-                            {'label': 'Height', 'value': 'height'},
-                            {'label': 'Reach', 'value': 'reach'},
-                            {'label': 'Total Strikes Landed', 'value': 'total_strikes_landed'},
-                            {'label': 'Total Strikes Accuracy', 'value': 'total_strikes_accuracy'},
-                            {'label': 'Body Strikes Landed', 'value': 'body_strikes_landed'},
-                            {'label': 'Leg Strikes Landed', 'value': 'leg_strikes_landed'},
-                            {'label': 'Clinch Strikes Landed', 'value': 'clinch_strikes_landed'},
-                            {'label': 'Ground Strikes Landed', 'value': 'ground_strikes_landed'},
-                            {'label': 'Knockdowns', 'value': 'knockdowns'},
-                            {'label': 'Takedowns Landed', 'value': 'takedowns_landed'},
-                            {'label': 'Takedowns Defended', 'value': 'takedowns_def'},
-                            {'label': 'Distance Strikes Landed', 'value': 'distance_strikes_landed'},
-                            {'label': 'Total Strikes Defended', 'value': 'total_strikes_def'},
-                        ],
-                        value='total_strikes_landed',
-                        inline=True,
-                        style={'display': 'flex', 'flex-direction': 'row', 'flex-wrap': 'wrap', 'justify-content': 'center', 'margin-left': '60px'}
-                    ),
+                   
                     html.H2("X-axis"),
                     dbc.RadioItems(
                         id='correlation-checklist',
@@ -279,6 +262,28 @@ app.layout = html.Div([
                         value='reach',
                         inline=True,
                         style={'display': 'flex', 'flex-direction': 'row', 'flex-wrap': 'wrap', 'justify-content': 'center'}
+                    ),
+                     html.H2("Y-axis"),
+                    dbc.RadioItems(
+                        id='correlation-checklist-yaxis',
+                        options=[
+                            {'label': 'Height', 'value': 'height'},
+                            {'label': 'Reach', 'value': 'reach'},
+                            {'label': 'Total Strikes Landed', 'value': 'total_strikes_landed'},
+                            {'label': 'Total Strikes Accuracy', 'value': 'total_strikes_accuracy'},
+                            {'label': 'Body Strikes Landed', 'value': 'body_strikes_landed'},
+                            {'label': 'Leg Strikes Landed', 'value': 'leg_strikes_landed'},
+                            {'label': 'Clinch Strikes Landed', 'value': 'clinch_strikes_landed'},
+                            {'label': 'Ground Strikes Landed', 'value': 'ground_strikes_landed'},
+                            {'label': 'Knockdowns', 'value': 'knockdowns'},
+                            {'label': 'Takedowns Landed', 'value': 'takedowns_landed'},
+                            {'label': 'Takedowns Defended', 'value': 'takedowns_def'},
+                            {'label': 'Distance Strikes Landed', 'value': 'distance_strikes_landed'},
+                            {'label': 'Total Strikes Defended', 'value': 'total_strikes_def'},
+                        ],
+                        value='total_strikes_landed',
+                        inline=True,
+                        style={'display': 'flex', 'flex-direction': 'row', 'flex-wrap': 'wrap', 'justify-content': 'center', 'margin-left': '60px'}
                     ),
                 ],
                 body=True,
