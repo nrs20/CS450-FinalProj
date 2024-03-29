@@ -76,7 +76,7 @@ fighter_breakdown_wins = fighter_breakdown[fighter_breakdown['result'] == 1].val
 # Create the Dash 
 app = dash.Dash(external_stylesheets=[dbc.themes.MORPH], suppress_callback_exceptions=True, assets_folder="static")
 #UNCOMMENT THIS BEFORE DEPLOYING, AND ALSO MOVE CSV FILE BACK INTO THE SRC FOLDER
-#server = app.server
+server = app.server
 load_figure_template("MORPH")  # Load the template
 
 # Define the layout
