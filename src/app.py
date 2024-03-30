@@ -83,19 +83,18 @@ load_figure_template("MORPH")  # Load the template
 app.layout = html.Div([
         html.H1("Welcome to the UFC Data Visualization Dashboard", style={"textAlign":"center"}),
         html.H2("Below are 5 data visulizations focused on various UFC statistics - enjoy!", style={"textAlign":"center"}),
-        html.H3("Created by Natalia Smith", style={"textAlign":"center", 'margin-bottom':'50px'}),
+        html.H3("Created by Natalia Smith.", style={"textAlign":"center", 'margin-bottom':'50px'}),
 
     dbc.Row([ 
         dbc.Col(html.Div([
             dbc.Card(
                 [
-                    html.H1("Fighter Win Stat Breakdown", style={'textAlign': 'center'}),
+                    html.H1("Fighter Win Stat Breakdown"),
                     dcc.Dropdown(
                         id='fighter-input',
                         options=fighter_dropdown,
                         value='Conor McGregor',
-                        style={'width': '300px', 'textAlign': 'center', 'justifyContent':'center', 'margin-left':'100px'}
-                    ),
+style={'width': '500px', 'textAlign': 'center', 'justifyContent':'center',  'margin-bottom': '20px'}                    ),
                     dbc.Spinner(
                         dcc.Graph(id='pie-chart'),
                         color="primary",
@@ -126,7 +125,7 @@ app.layout = html.Div([
         dbc.Col(html.Div([
             dbc.Card(
                 [
-                    html.H1("Division Finishes Breakdown", style={'textAlign': 'center'}),
+                    html.H1("Division Finishes Breakdown"),
                     dcc.Dropdown(
                         id='division-dropdown',
                         options=[
@@ -134,8 +133,7 @@ app.layout = html.Div([
                             {'label': 'Men\'s Divisions', 'value': 'Men'},
                         ],
                         value='Men',
-                        style={'width': '300px', 'textAlign': 'center', 'justifyContent':'center', 'margin-left':'100px'}
-                    ),
+style={'width': '500px', 'textAlign': 'center', 'justifyContent':'center',  'margin-bottom': '20px'}                    ),
                     dbc.Spinner(
                         dcc.Graph(id='bar-chart'),
                         color="primary",
@@ -164,7 +162,7 @@ app.layout = html.Div([
         dbc.Col(html.Div([
             dbc.Card(
                 [
-                    html.H1("Fighter Stance Breakdown", style={'textAlign': 'center'}),
+                    html.H1("Fighter Stance Breakdown"),
                     dcc.Dropdown(
                         id='div-dropdown',
                         options=[
@@ -181,8 +179,7 @@ app.layout = html.Div([
                             {'label': 'Heavyweight', 'value': 'Heavyweight'}
                         ],
                         value='Lightweight',
-                        style={'width': '300px', 'textAlign': 'center', 'justifyContent':'center', 'margin-left':'100px'}
-                    ),
+style={'width': '500px', 'textAlign': 'center', 'justifyContent':'center',  'margin-bottom': '20px'}),
                     dbc.Spinner(
                         dcc.Graph(id='stance-chart', style={'textAlign': 'center'}),
                         color="primary",
@@ -216,7 +213,7 @@ app.layout = html.Div([
         dbc.Col(html.Div([
             dbc.Card(
                 [
-                    html.H1("Correlation Explorer", style={'textAlign': 'center'}),
+                    html.H1("Correlation Explorer"),
                     dcc.Dropdown(
                         id='correlation-dropdown',
                         options=[
@@ -233,8 +230,7 @@ app.layout = html.Div([
                             {'label': 'Heavyweight', 'value': 'Heavyweight'}
                         ],
                         value='Lightweight',
-                        style={'width': '300px', 'textAlign': 'center', 'justifyContent':'center', 'margin-left':'100px'}
-                    ),
+style={'width': '500px', 'textAlign': 'center', 'justifyContent':'center',  'margin-bottom': '20px'}                    ),
                     dbc.Spinner(
                         dcc.Graph(id='correlation-graph'),
                         color="primary",
@@ -293,19 +289,17 @@ app.layout = html.Div([
         dbc.Col(html.Div([
             dbc.Card(
                 [
-                    html.H1("Fighter Stats", style={'textAlign': 'center'}),
+                    html.H1("Fighter Stats"),
                     dcc.Dropdown(
                         id='fighter-stats-dropdown',
                         options=fighter_dropdown,
                         value='Conor McGregor',
-                        style={'width': '300px', 'textAlign': 'center', 'justifyContent':'center', 'margin-left':'100px'}
-                    ),
+style={'width': '500px', 'textAlign': 'center', 'justifyContent':'center',  'margin-bottom': '20px'}                    ),
                     dcc.Dropdown(
                         id='fighter-specify-stats-dropdown',
                         options=column_names,
                         value='total_strikes_landed',
-                        style={'width': '300px', 'textAlign': 'center', 'justifyContent':'center', 'margin-left':'100px'}
-                    ),
+style={'width': '500px', 'textAlign': 'center', 'justifyContent':'center',  'margin-bottom': '20px'}                    ),
                     dbc.Spinner(
                         dcc.Graph(id='fighter-full-stats-graph', style={'textAlign': 'center'}),
                         color="primary",
@@ -325,7 +319,7 @@ app.layout = html.Div([
             )
         ]), md=6),
         
-    ], style={'display': 'flex', 'flex-direction': 'row', 'flex-wrap': 'wrap', 'justify-content': 'center', 'margin-left': '60px', 'margin-bottom': '100px'}) ,
+    ], style={'display': 'flex', 'flex-direction': 'row', 'flex-wrap': 'wrap', 'justify-content': 'center', 'margin-left': '30px', 'margin-bottom': '100px'}) ,
 ])
 
 
